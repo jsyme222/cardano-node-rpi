@@ -18,11 +18,11 @@ RUN mkdir -p $HOME/.ghcup/bin && mkdir -p $HOME/.cabal/bin \
     && ghcup upgrade
 
 # Install ghc 8.10.2
-ARG GHC_VERSION=8.10.2
+ARG GHC_VERSION=9.8.1
 RUN ghcup install ghc $GHC_VERSION
 
 # Install cabal 3.4.0.0
-ARG CABAL_VERSION=3.4.0.0
+ARG CABAL_VERSION=3.10.1.0
 RUN ghcup install cabal $CABAL_VERSION
 
 # Install libsodium
@@ -35,7 +35,7 @@ ENV LD_LIBRARY_PATH="/opt/libsodium/lib:${LD_LIBRARY_PATH}" \
     PKG_CONFIG_PATH="/opt/libsodium/lib/pkgconfig:${PKG_CONFIG_PATH}"
 
 # Build cardano node
-ARG VERSION=1.29.0
+ARG VERSION=8.3.0
 RUN git clone https://github.com/input-output-hk/cardano-node.git \
     && cd cardano-node \
     && git fetch --all --recurse-submodules --tags \
